@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import { healthRouter } from "./routes/health";
 import { errorHandler } from "./middleware/error-handler";
+import { authRouter } from "./routes/auth";
 
 export const app = express();
 
@@ -16,5 +17,6 @@ app.get("/api/v1/health", (_req, res) => {
 });
 
 app.use("/api/v1/health/database", healthRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.use(errorHandler);
